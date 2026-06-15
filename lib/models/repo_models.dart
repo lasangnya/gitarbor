@@ -15,24 +15,27 @@ abstract class RepoTree with _$RepoTree {
 abstract class RepoMeta with _$RepoMeta {
   const factory RepoMeta({
     required String name,
-    required String fullName,
+    @JsonKey(name: 'full_name') required String fullName,
     String? description,
-    required DateTime createdAt,
-    required int starCount,
+    @JsonKey(name: 'created_at') DateTime? createdAt, // Nullable
+    @JsonKey(name: 'stargazers_count')
+    @Default(0)
+    int starCount, // Default to 0
     String? primaryLanguage,
-    required String defaultBranch,
+    @JsonKey(name: 'default_branch') @Default('main') String defaultBranch,
   }) = _RepoMeta;
 
-  factory RepoMeta.fromJson(Map<String, dynamic> json) => _$RepoMetaFromJson(json);
+  factory RepoMeta.fromJson(Map<String, dynamic> json) =>
+      _$RepoMetaFromJson(json);
 }
 
 @freezed
 abstract class ContributorBranch with _$ContributorBranch {
   const factory ContributorBranch({
     required String login,
-    required String avatarUrl,
+    @JsonKey(name: 'avatar_url') String? avatarUrl, // Nullable
     required List<GitBranch> branches,
-    required int totalCommits,
+    @Default(0) int totalCommits,
   }) = _ContributorBranch;
 }
 
@@ -42,8 +45,8 @@ enum BranchStatus { active, merged, stale }
 abstract class GitBranch with _$GitBranch {
   const factory GitBranch({
     required String name,
-    required BranchStatus status,
-    required int commitCount,
-    required DateTime lastCommitDate,
+    @Default(BranchStatus.active) BranchStatus status,
+    @Default(0) int commitCount,
+    DateTime? lastCommitDate, // Nullable
   }) = _GitBranch;
 }

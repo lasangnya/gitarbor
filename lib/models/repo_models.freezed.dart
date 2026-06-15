@@ -299,7 +299,7 @@ $RepoMetaCopyWith<$Res> get repo {
 /// @nodoc
 mixin _$RepoMeta {
 
- String get name; String get fullName; String? get description; DateTime get createdAt; int get starCount; String? get primaryLanguage; String get defaultBranch;
+ String get name;@JsonKey(name: 'full_name') String get fullName; String? get description;@JsonKey(name: 'created_at') DateTime? get createdAt;@JsonKey(name: 'stargazers_count') int get starCount; String? get primaryLanguage;@JsonKey(name: 'default_branch') String get defaultBranch;
 /// Create a copy of RepoMeta
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -332,7 +332,7 @@ abstract mixin class $RepoMetaCopyWith<$Res>  {
   factory $RepoMetaCopyWith(RepoMeta value, $Res Function(RepoMeta) _then) = _$RepoMetaCopyWithImpl;
 @useResult
 $Res call({
- String name, String fullName, String? description, DateTime createdAt, int starCount, String? primaryLanguage, String defaultBranch
+ String name,@JsonKey(name: 'full_name') String fullName, String? description,@JsonKey(name: 'created_at') DateTime? createdAt,@JsonKey(name: 'stargazers_count') int starCount, String? primaryLanguage,@JsonKey(name: 'default_branch') String defaultBranch
 });
 
 
@@ -349,13 +349,13 @@ class _$RepoMetaCopyWithImpl<$Res>
 
 /// Create a copy of RepoMeta
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? fullName = null,Object? description = freezed,Object? createdAt = null,Object? starCount = null,Object? primaryLanguage = freezed,Object? defaultBranch = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? fullName = null,Object? description = freezed,Object? createdAt = freezed,Object? starCount = null,Object? primaryLanguage = freezed,Object? defaultBranch = null,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
 as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as DateTime,starCount: null == starCount ? _self.starCount : starCount // ignore: cast_nullable_to_non_nullable
+as String?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,starCount: null == starCount ? _self.starCount : starCount // ignore: cast_nullable_to_non_nullable
 as int,primaryLanguage: freezed == primaryLanguage ? _self.primaryLanguage : primaryLanguage // ignore: cast_nullable_to_non_nullable
 as String?,defaultBranch: null == defaultBranch ? _self.defaultBranch : defaultBranch // ignore: cast_nullable_to_non_nullable
 as String,
@@ -443,7 +443,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String fullName,  String? description,  DateTime createdAt,  int starCount,  String? primaryLanguage,  String defaultBranch)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name, @JsonKey(name: 'full_name')  String fullName,  String? description, @JsonKey(name: 'created_at')  DateTime? createdAt, @JsonKey(name: 'stargazers_count')  int starCount,  String? primaryLanguage, @JsonKey(name: 'default_branch')  String defaultBranch)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RepoMeta() when $default != null:
 return $default(_that.name,_that.fullName,_that.description,_that.createdAt,_that.starCount,_that.primaryLanguage,_that.defaultBranch);case _:
@@ -464,7 +464,7 @@ return $default(_that.name,_that.fullName,_that.description,_that.createdAt,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String fullName,  String? description,  DateTime createdAt,  int starCount,  String? primaryLanguage,  String defaultBranch)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name, @JsonKey(name: 'full_name')  String fullName,  String? description, @JsonKey(name: 'created_at')  DateTime? createdAt, @JsonKey(name: 'stargazers_count')  int starCount,  String? primaryLanguage, @JsonKey(name: 'default_branch')  String defaultBranch)  $default,) {final _that = this;
 switch (_that) {
 case _RepoMeta():
 return $default(_that.name,_that.fullName,_that.description,_that.createdAt,_that.starCount,_that.primaryLanguage,_that.defaultBranch);case _:
@@ -484,7 +484,7 @@ return $default(_that.name,_that.fullName,_that.description,_that.createdAt,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String fullName,  String? description,  DateTime createdAt,  int starCount,  String? primaryLanguage,  String defaultBranch)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name, @JsonKey(name: 'full_name')  String fullName,  String? description, @JsonKey(name: 'created_at')  DateTime? createdAt, @JsonKey(name: 'stargazers_count')  int starCount,  String? primaryLanguage, @JsonKey(name: 'default_branch')  String defaultBranch)?  $default,) {final _that = this;
 switch (_that) {
 case _RepoMeta() when $default != null:
 return $default(_that.name,_that.fullName,_that.description,_that.createdAt,_that.starCount,_that.primaryLanguage,_that.defaultBranch);case _:
@@ -499,16 +499,16 @@ return $default(_that.name,_that.fullName,_that.description,_that.createdAt,_tha
 @JsonSerializable()
 
 class _RepoMeta implements RepoMeta {
-  const _RepoMeta({required this.name, required this.fullName, this.description, required this.createdAt, required this.starCount, this.primaryLanguage, required this.defaultBranch});
+  const _RepoMeta({required this.name, @JsonKey(name: 'full_name') required this.fullName, this.description, @JsonKey(name: 'created_at') this.createdAt, @JsonKey(name: 'stargazers_count') this.starCount = 0, this.primaryLanguage, @JsonKey(name: 'default_branch') this.defaultBranch = 'main'});
   factory _RepoMeta.fromJson(Map<String, dynamic> json) => _$RepoMetaFromJson(json);
 
 @override final  String name;
-@override final  String fullName;
+@override@JsonKey(name: 'full_name') final  String fullName;
 @override final  String? description;
-@override final  DateTime createdAt;
-@override final  int starCount;
+@override@JsonKey(name: 'created_at') final  DateTime? createdAt;
+@override@JsonKey(name: 'stargazers_count') final  int starCount;
 @override final  String? primaryLanguage;
-@override final  String defaultBranch;
+@override@JsonKey(name: 'default_branch') final  String defaultBranch;
 
 /// Create a copy of RepoMeta
 /// with the given fields replaced by the non-null parameter values.
@@ -543,7 +543,7 @@ abstract mixin class _$RepoMetaCopyWith<$Res> implements $RepoMetaCopyWith<$Res>
   factory _$RepoMetaCopyWith(_RepoMeta value, $Res Function(_RepoMeta) _then) = __$RepoMetaCopyWithImpl;
 @override @useResult
 $Res call({
- String name, String fullName, String? description, DateTime createdAt, int starCount, String? primaryLanguage, String defaultBranch
+ String name,@JsonKey(name: 'full_name') String fullName, String? description,@JsonKey(name: 'created_at') DateTime? createdAt,@JsonKey(name: 'stargazers_count') int starCount, String? primaryLanguage,@JsonKey(name: 'default_branch') String defaultBranch
 });
 
 
@@ -560,13 +560,13 @@ class __$RepoMetaCopyWithImpl<$Res>
 
 /// Create a copy of RepoMeta
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? fullName = null,Object? description = freezed,Object? createdAt = null,Object? starCount = null,Object? primaryLanguage = freezed,Object? defaultBranch = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? fullName = null,Object? description = freezed,Object? createdAt = freezed,Object? starCount = null,Object? primaryLanguage = freezed,Object? defaultBranch = null,}) {
   return _then(_RepoMeta(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
 as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as DateTime,starCount: null == starCount ? _self.starCount : starCount // ignore: cast_nullable_to_non_nullable
+as String?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,starCount: null == starCount ? _self.starCount : starCount // ignore: cast_nullable_to_non_nullable
 as int,primaryLanguage: freezed == primaryLanguage ? _self.primaryLanguage : primaryLanguage // ignore: cast_nullable_to_non_nullable
 as String?,defaultBranch: null == defaultBranch ? _self.defaultBranch : defaultBranch // ignore: cast_nullable_to_non_nullable
 as String,
@@ -579,7 +579,7 @@ as String,
 /// @nodoc
 mixin _$ContributorBranch {
 
- String get login; String get avatarUrl; List<GitBranch> get branches; int get totalCommits;
+ String get login;@JsonKey(name: 'avatar_url') String? get avatarUrl; List<GitBranch> get branches; int get totalCommits;
 /// Create a copy of ContributorBranch
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -610,7 +610,7 @@ abstract mixin class $ContributorBranchCopyWith<$Res>  {
   factory $ContributorBranchCopyWith(ContributorBranch value, $Res Function(ContributorBranch) _then) = _$ContributorBranchCopyWithImpl;
 @useResult
 $Res call({
- String login, String avatarUrl, List<GitBranch> branches, int totalCommits
+ String login,@JsonKey(name: 'avatar_url') String? avatarUrl, List<GitBranch> branches, int totalCommits
 });
 
 
@@ -627,11 +627,11 @@ class _$ContributorBranchCopyWithImpl<$Res>
 
 /// Create a copy of ContributorBranch
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? login = null,Object? avatarUrl = null,Object? branches = null,Object? totalCommits = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? login = null,Object? avatarUrl = freezed,Object? branches = null,Object? totalCommits = null,}) {
   return _then(_self.copyWith(
 login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
-as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
-as String,branches: null == branches ? _self.branches : branches // ignore: cast_nullable_to_non_nullable
+as String,avatarUrl: freezed == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
+as String?,branches: null == branches ? _self.branches : branches // ignore: cast_nullable_to_non_nullable
 as List<GitBranch>,totalCommits: null == totalCommits ? _self.totalCommits : totalCommits // ignore: cast_nullable_to_non_nullable
 as int,
   ));
@@ -718,7 +718,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String login,  String avatarUrl,  List<GitBranch> branches,  int totalCommits)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String login, @JsonKey(name: 'avatar_url')  String? avatarUrl,  List<GitBranch> branches,  int totalCommits)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ContributorBranch() when $default != null:
 return $default(_that.login,_that.avatarUrl,_that.branches,_that.totalCommits);case _:
@@ -739,7 +739,7 @@ return $default(_that.login,_that.avatarUrl,_that.branches,_that.totalCommits);c
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String login,  String avatarUrl,  List<GitBranch> branches,  int totalCommits)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String login, @JsonKey(name: 'avatar_url')  String? avatarUrl,  List<GitBranch> branches,  int totalCommits)  $default,) {final _that = this;
 switch (_that) {
 case _ContributorBranch():
 return $default(_that.login,_that.avatarUrl,_that.branches,_that.totalCommits);case _:
@@ -759,7 +759,7 @@ return $default(_that.login,_that.avatarUrl,_that.branches,_that.totalCommits);c
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String login,  String avatarUrl,  List<GitBranch> branches,  int totalCommits)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String login, @JsonKey(name: 'avatar_url')  String? avatarUrl,  List<GitBranch> branches,  int totalCommits)?  $default,) {final _that = this;
 switch (_that) {
 case _ContributorBranch() when $default != null:
 return $default(_that.login,_that.avatarUrl,_that.branches,_that.totalCommits);case _:
@@ -774,11 +774,11 @@ return $default(_that.login,_that.avatarUrl,_that.branches,_that.totalCommits);c
 
 
 class _ContributorBranch implements ContributorBranch {
-  const _ContributorBranch({required this.login, required this.avatarUrl, required final  List<GitBranch> branches, required this.totalCommits}): _branches = branches;
+  const _ContributorBranch({required this.login, @JsonKey(name: 'avatar_url') this.avatarUrl, required final  List<GitBranch> branches, this.totalCommits = 0}): _branches = branches;
   
 
 @override final  String login;
-@override final  String avatarUrl;
+@override@JsonKey(name: 'avatar_url') final  String? avatarUrl;
  final  List<GitBranch> _branches;
 @override List<GitBranch> get branches {
   if (_branches is EqualUnmodifiableListView) return _branches;
@@ -786,7 +786,7 @@ class _ContributorBranch implements ContributorBranch {
   return EqualUnmodifiableListView(_branches);
 }
 
-@override final  int totalCommits;
+@override@JsonKey() final  int totalCommits;
 
 /// Create a copy of ContributorBranch
 /// with the given fields replaced by the non-null parameter values.
@@ -818,7 +818,7 @@ abstract mixin class _$ContributorBranchCopyWith<$Res> implements $ContributorBr
   factory _$ContributorBranchCopyWith(_ContributorBranch value, $Res Function(_ContributorBranch) _then) = __$ContributorBranchCopyWithImpl;
 @override @useResult
 $Res call({
- String login, String avatarUrl, List<GitBranch> branches, int totalCommits
+ String login,@JsonKey(name: 'avatar_url') String? avatarUrl, List<GitBranch> branches, int totalCommits
 });
 
 
@@ -835,11 +835,11 @@ class __$ContributorBranchCopyWithImpl<$Res>
 
 /// Create a copy of ContributorBranch
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? login = null,Object? avatarUrl = null,Object? branches = null,Object? totalCommits = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? login = null,Object? avatarUrl = freezed,Object? branches = null,Object? totalCommits = null,}) {
   return _then(_ContributorBranch(
 login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
-as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
-as String,branches: null == branches ? _self._branches : branches // ignore: cast_nullable_to_non_nullable
+as String,avatarUrl: freezed == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
+as String?,branches: null == branches ? _self._branches : branches // ignore: cast_nullable_to_non_nullable
 as List<GitBranch>,totalCommits: null == totalCommits ? _self.totalCommits : totalCommits // ignore: cast_nullable_to_non_nullable
 as int,
   ));
@@ -851,7 +851,7 @@ as int,
 /// @nodoc
 mixin _$GitBranch {
 
- String get name; BranchStatus get status; int get commitCount; DateTime get lastCommitDate;
+ String get name; BranchStatus get status; int get commitCount; DateTime? get lastCommitDate;
 /// Create a copy of GitBranch
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -882,7 +882,7 @@ abstract mixin class $GitBranchCopyWith<$Res>  {
   factory $GitBranchCopyWith(GitBranch value, $Res Function(GitBranch) _then) = _$GitBranchCopyWithImpl;
 @useResult
 $Res call({
- String name, BranchStatus status, int commitCount, DateTime lastCommitDate
+ String name, BranchStatus status, int commitCount, DateTime? lastCommitDate
 });
 
 
@@ -899,13 +899,13 @@ class _$GitBranchCopyWithImpl<$Res>
 
 /// Create a copy of GitBranch
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? status = null,Object? commitCount = null,Object? lastCommitDate = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? status = null,Object? commitCount = null,Object? lastCommitDate = freezed,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as BranchStatus,commitCount: null == commitCount ? _self.commitCount : commitCount // ignore: cast_nullable_to_non_nullable
-as int,lastCommitDate: null == lastCommitDate ? _self.lastCommitDate : lastCommitDate // ignore: cast_nullable_to_non_nullable
-as DateTime,
+as int,lastCommitDate: freezed == lastCommitDate ? _self.lastCommitDate : lastCommitDate // ignore: cast_nullable_to_non_nullable
+as DateTime?,
   ));
 }
 
@@ -990,7 +990,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  BranchStatus status,  int commitCount,  DateTime lastCommitDate)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  BranchStatus status,  int commitCount,  DateTime? lastCommitDate)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GitBranch() when $default != null:
 return $default(_that.name,_that.status,_that.commitCount,_that.lastCommitDate);case _:
@@ -1011,7 +1011,7 @@ return $default(_that.name,_that.status,_that.commitCount,_that.lastCommitDate);
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  BranchStatus status,  int commitCount,  DateTime lastCommitDate)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  BranchStatus status,  int commitCount,  DateTime? lastCommitDate)  $default,) {final _that = this;
 switch (_that) {
 case _GitBranch():
 return $default(_that.name,_that.status,_that.commitCount,_that.lastCommitDate);case _:
@@ -1031,7 +1031,7 @@ return $default(_that.name,_that.status,_that.commitCount,_that.lastCommitDate);
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  BranchStatus status,  int commitCount,  DateTime lastCommitDate)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  BranchStatus status,  int commitCount,  DateTime? lastCommitDate)?  $default,) {final _that = this;
 switch (_that) {
 case _GitBranch() when $default != null:
 return $default(_that.name,_that.status,_that.commitCount,_that.lastCommitDate);case _:
@@ -1046,13 +1046,13 @@ return $default(_that.name,_that.status,_that.commitCount,_that.lastCommitDate);
 
 
 class _GitBranch implements GitBranch {
-  const _GitBranch({required this.name, required this.status, required this.commitCount, required this.lastCommitDate});
+  const _GitBranch({required this.name, this.status = BranchStatus.active, this.commitCount = 0, this.lastCommitDate});
   
 
 @override final  String name;
-@override final  BranchStatus status;
-@override final  int commitCount;
-@override final  DateTime lastCommitDate;
+@override@JsonKey() final  BranchStatus status;
+@override@JsonKey() final  int commitCount;
+@override final  DateTime? lastCommitDate;
 
 /// Create a copy of GitBranch
 /// with the given fields replaced by the non-null parameter values.
@@ -1084,7 +1084,7 @@ abstract mixin class _$GitBranchCopyWith<$Res> implements $GitBranchCopyWith<$Re
   factory _$GitBranchCopyWith(_GitBranch value, $Res Function(_GitBranch) _then) = __$GitBranchCopyWithImpl;
 @override @useResult
 $Res call({
- String name, BranchStatus status, int commitCount, DateTime lastCommitDate
+ String name, BranchStatus status, int commitCount, DateTime? lastCommitDate
 });
 
 
@@ -1101,13 +1101,13 @@ class __$GitBranchCopyWithImpl<$Res>
 
 /// Create a copy of GitBranch
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? status = null,Object? commitCount = null,Object? lastCommitDate = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? status = null,Object? commitCount = null,Object? lastCommitDate = freezed,}) {
   return _then(_GitBranch(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as BranchStatus,commitCount: null == commitCount ? _self.commitCount : commitCount // ignore: cast_nullable_to_non_nullable
-as int,lastCommitDate: null == lastCommitDate ? _self.lastCommitDate : lastCommitDate // ignore: cast_nullable_to_non_nullable
-as DateTime,
+as int,lastCommitDate: freezed == lastCommitDate ? _self.lastCommitDate : lastCommitDate // ignore: cast_nullable_to_non_nullable
+as DateTime?,
   ));
 }
 

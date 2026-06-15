@@ -60,12 +60,12 @@ class RepoRepository {
 
     // 5. Build the Contributor models with their specific branches
     final contributors = rawContributors.map((c) {
-      final login = c['login'];
+      final String login = c['login'] ?? 'Unknown';
       return ContributorBranch(
         login: login,
-        avatarUrl: c['avatar_url'],
-        totalCommits: c['contributions'],
-        branches: branchMap[login] ?? [], // Inject the branches we found!
+        avatarUrl: c['avatar_url'] as String?,
+        totalCommits: (c['contributions'] as num?)?.toInt() ?? 0,
+        branches: branchMap[login] ?? [],
       );
     }).toList();
 
