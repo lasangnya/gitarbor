@@ -52,6 +52,7 @@ class LayoutEngine {
                   tangent.position.dx + xOffset,
                   tangent.position.dy,
                 ),
+                status: branches[j].status,
               ));
             }
           }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../models/repo_models.dart';
+
 class TreeLayout {
   final Offset trunkBase;
   final Offset trunkTop;
@@ -29,6 +31,11 @@ class ContributorLayout {
 class BranchLabelLayout {
   final String name;
   final Offset position;
+  final BranchStatus status;
 
-  BranchLabelLayout({required this.name, required this.position});
+  BranchLabelLayout({
+    required this.name,
+    required this.position,
+    required this.status,
+  });
 }
