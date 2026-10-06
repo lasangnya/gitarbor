@@ -47,7 +47,7 @@ class RepoRepository {
       final name = b['name'];
       if (name == meta.defaultBranch) continue; // Skip main trunk
 
-      final branch = GitBranch(
+      GitBranch(
         name: name,
         status: BranchStatus.active,
         commitCount: 0,

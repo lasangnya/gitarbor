@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text('🌳', style: TextStyle(fontSize: 80)),
-              const Text('Rootprint', style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+              const Text('Gitarbor', style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
               const SizedBox(height: 40),
               TextField(
                 controller: _controller,

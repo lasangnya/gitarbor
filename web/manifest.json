@@ -1,11 +1,11 @@
 {
-    "name": "root_print",
-    "short_name": "root_print",
+    "name": "Gitarbor",
+    "short_name": "Gitarbor",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Rootprint reads a repo's git history via the GitHub API and renders it as an organic tree.",
+    "description": "Gitarbor grows a GitHub repository into a watercolour botanical tree.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

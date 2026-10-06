@@ -1,5 +1,5 @@
-name: root_print
-description: "Rootprint reads a repo's git history via the GitHub API and renders it as an organic tree."
+name: gitarbor
+description: "Gitarbor grows a GitHub repository into a watercolour botanical tree."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -35,12 +35,14 @@ dependencies:
   dio: ^5.9.2
   freezed_annotation: ^3.1.0
   json_annotation: ^4.12.0
-  google_fonts: ^8.1.0
-  cached_network_image: ^3.4.1
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.9
+  pdf: ^3.13.1
+  printing: ^5.15.1
+  flutter_secure_storage: ^11.2.0
+  path_provider: ^2.1.6
+  url_launcher: ^6.3.3
 
 dev_dependencies:
   flutter_test:
@@ -98,3 +100,23 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+  assets:
+    - assets/fonts/
+
+  fonts:
+    - family: Young Serif
+      fonts:
+        - asset: assets/fonts/YoungSerif-Regular.ttf
+    - family: Bricolage Grotesque
+      fonts:
+        - asset: assets/fonts/BricolageGrotesque-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/BricolageGrotesque-SemiBold.ttf
+          weight: 600
+    - family: IBM Plex Mono
+      fonts:
+        - asset: assets/fonts/IBMPlexMono-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/IBMPlexMono-Medium.ttf
+          weight: 500
