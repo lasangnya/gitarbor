@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../data/models/repo_models.dart';
 import '../print/print_screen.dart';
 import '../state/app_state.dart';
+import '../tree/tree_geometry.dart';
 import '../tree/tree_model.dart';
 import '../tree/tree_painter.dart';
 import '../tree/tree_view.dart';
@@ -33,6 +34,15 @@ class LiveScreen extends ConsumerStatefulWidget {
 class _LiveScreenState extends ConsumerState<LiveScreen>
     with SingleTickerProviderStateMixin {
   late final TreeModel _model = TreeModelBuilder().build(widget.snapshot);
+  late final Rect _bounds = TreeGeometry.bounds(_model);
+
+  /// The tree's bounds with room for floating bars, in tree units.
+  Rect _roomy({double top = 0, double bottom = 0}) => Rect.fromLTRB(
+    _bounds.left,
+    _bounds.top - top,
+    _bounds.right,
+    _bounds.bottom + bottom,
+  );
   late final AnimationController _replay;
 
   double _grow = 1;
@@ -127,6 +137,7 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
     bool hover = false,
     bool tap = false,
     bool pan = false,
+    Rect? viewBox,
   }) {
     final t = context.tokens;
     final reduce = ref.watch(settingsProvider.select((s) => s.reduceMotion));
@@ -138,6 +149,7 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
       still: reduce,
       labels: labels,
       petals: true,
+      viewBox: viewBox,
       focus: _focus,
       selected: _selected?.name,
       zoom: _zoom,
@@ -249,6 +261,7 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
         ),
         Expanded(
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _rail(t),
               Expanded(child: _stage(t)),
@@ -373,6 +386,7 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
                   labels: _labels ? TreeLabels.full : TreeLabels.none,
                   hover: true,
                   pan: true,
+                  viewBox: _roomy(bottom: 100),
                 ),
               ),
             ),
@@ -461,7 +475,12 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
         return Stack(
           children: [
             Positioned.fill(
-              child: _tree(labels: TreeLabels.full, tap: true, pan: true),
+              child: _tree(
+                labels: TreeLabels.full,
+                tap: true,
+                pan: true,
+                viewBox: _roomy(top: 90, bottom: 110),
+              ),
             ),
             Positioned(
               left: 24,

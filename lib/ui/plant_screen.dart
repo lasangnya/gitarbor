@@ -530,7 +530,13 @@ class _RepoField extends StatelessWidget {
                   enableSuggestions: false,
                   textInputAction: TextInputAction.go,
                   onSubmitted: (_) => onSubmit(),
-                  decoration: InputDecoration.collapsed(
+                  decoration: InputDecoration(
+                    isCollapsed: true,
+                    filled: false,
+                    border: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
                     hintText: 'owner/repo',
                     hintStyle: mono(15, color: t.ink3.withValues(alpha: .6)),
                   ),
@@ -571,8 +577,12 @@ class RepoChip extends StatelessWidget {
         child: Container(
           height: 32,
           padding: const EdgeInsets.symmetric(horizontal: 12),
-          alignment: Alignment.center,
-          child: Text(label, style: mono(12, color: selected ? t.ink : t.ink2)),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(label, style: mono(12, color: selected ? t.ink : t.ink2)),
+            ],
+          ),
         ),
       ),
     );

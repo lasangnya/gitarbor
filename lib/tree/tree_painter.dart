@@ -162,6 +162,8 @@ class TreePainter extends CustomPainter {
     final sc = scene;
     final w = size.width, h = size.height;
     if (w <= 0 || h <= 0) return;
+    // The ground runs far past the view; keep it inside the canvas.
+    canvas.clipRect(Offset.zero & size);
     final lineArt = sc.print && sc.ink != TreeInk.color;
 
     if (!sc.print && sc.sky) _sky(canvas, size);

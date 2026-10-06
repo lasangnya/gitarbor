@@ -87,6 +87,12 @@ class _TreeViewState extends State<TreeView>
 
   Future<void> _loadAtlas() async {
     final palette = widget.palette;
+    final ready = SpriteAtlas.cached(palette);
+    if (ready != null) {
+      // Called from initState or didUpdateWidget; a build follows.
+      _atlas = ready;
+      return;
+    }
     final atlas = await SpriteAtlas.load(palette);
     if (!mounted || palette != widget.palette) return;
     setState(() => _atlas = atlas);

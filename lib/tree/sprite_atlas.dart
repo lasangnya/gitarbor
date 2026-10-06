@@ -64,10 +64,14 @@ class SpriteAtlas {
   final ui.Image paper;
 
   static final _cache = <String, Future<SpriteAtlas>>{};
+  static final _ready = <String, SpriteAtlas>{};
 
   /// The atlas for [p], painted on first use and cached by palette id.
   static Future<SpriteAtlas> load(TreePalette p) =>
-      _cache.putIfAbsent(p.id, () => _paint(p));
+      _cache.putIfAbsent(p.id, () => _paint(p).then((a) => _ready[p.id] = a));
+
+  /// The atlas for [p] if it has already been painted.
+  static SpriteAtlas? cached(TreePalette p) => _ready[p.id];
 
   ui.Rect leafRect(int bucket, int variant) => ui.Rect.fromLTWH(
     bucket * (leafLength + 2 * _leafPad) * _k,
