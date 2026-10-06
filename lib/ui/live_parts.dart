@@ -6,11 +6,20 @@ import 'theme.dart';
 import 'widgets/author_avatar.dart';
 import 'widgets/status_icon.dart';
 
-/// Live / Print segmented tabs. Live is always the current screen.
+/// Live / Print segmented tabs. Live is the current screen unless
+/// [printActive] is set (the print screen), where [onLive] goes back.
 class LiveTabs extends StatelessWidget {
-  const LiveTabs({super.key, required this.onPrint, this.height = 32});
+  const LiveTabs({
+    super.key,
+    this.onPrint,
+    this.onLive,
+    this.printActive = false,
+    this.height = 32,
+  });
 
-  final VoidCallback onPrint;
+  final VoidCallback? onPrint;
+  final VoidCallback? onLive;
+  final bool printActive;
   final double height;
 
   @override
@@ -54,9 +63,9 @@ class LiveTabs extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          tab('Live', true, null),
+          tab('Live', !printActive, printActive ? onLive : null),
           const SizedBox(width: 4),
-          tab('Print', false, onPrint),
+          tab('Print', printActive, printActive ? null : onPrint),
         ],
       ),
     );

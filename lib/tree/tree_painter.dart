@@ -694,7 +694,11 @@ class TreePainter extends CustomPainter {
 
     if (numbered) {
       for (final it in items) {
-        final r = fs * .95;
+        final num = it.limb == 0
+            ? null
+            : sc.text('${m.limbs[it.limb].number}', mono);
+        // Two-digit numbers widen the circle so they stay inside it.
+        final r = math.max(fs * .95, (num?.width ?? 0) / 2 + fs * .35);
         final x = it.at.dx + it.side * r * 1.6, y = it.at.dy - r * .6;
         c.drawLine(
           it.at,
@@ -708,8 +712,7 @@ class TreePainter extends CustomPainter {
         }
         c.drawCircle(Offset(x, y), r, Paint()..color = p.paper);
         c.drawCircle(Offset(x, y), r, _stroke(p.ink, 1));
-        final tp = sc.text('${m.limbs[it.limb].number}', mono);
-        tp.paint(c, Offset(x - tp.width / 2, y - tp.height / 2 + .5));
+        num!.paint(c, Offset(x - num.width / 2, y - num.height / 2 + .5));
       }
       return;
     }
