@@ -122,3 +122,4 @@ app.*.symbols
 .idea/
 *.iml
 .DS_Store
+/build

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'tree/debug_tree_screen.dart';
+
 class GitarborApp extends StatelessWidget {
   const GitarborApp({super.key});
 
@@ -12,18 +14,7 @@ class GitarborApp extends StatelessWidget {
         fontFamily: 'Bricolage Grotesque',
         scaffoldBackgroundColor: const Color(0xFFEDF1E8),
       ),
-      home: const Scaffold(
-        body: Center(
-          child: Text(
-            'Gitarbor',
-            style: TextStyle(
-              fontFamily: 'Young Serif',
-              fontSize: 44,
-              color: Color(0xFF1C2826),
-            ),
-          ),
-        ),
-      ),
+      home: const DebugTreeScreen(),
     );
   }
 }
