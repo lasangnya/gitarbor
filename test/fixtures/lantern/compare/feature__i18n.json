@@ -1,0 +1,127 @@
+{
+  "status": "ahead",
+  "ahead_by": 6,
+  "behind_by": 2,
+  "total_commits": 6,
+  "merge_base_commit": {
+    "sha": "69d2fd67b5a76d08f9aed3185aa9facbca6cb6ce",
+    "commit": {
+      "message": "Add watch mode\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Rahul Dev",
+        "date": "2026-07-05T12:00:00Z"
+      },
+      "committer": {
+        "name": "Rahul Dev",
+        "date": "2026-07-05T12:00:00Z"
+      }
+    },
+    "author": {
+      "login": "rahul-dev"
+    }
+  },
+  "commits": [
+    {
+      "sha": "7d8a43f3ced72d9bda063b8242a263b928a2afc8",
+      "commit": {
+        "message": "i18n step 1\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-05T10:00:00Z"
+        },
+        "committer": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-05T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "aiko-t"
+      }
+    },
+    {
+      "sha": "a6c1810e6ca8bf5d324e13e856825d23e217eb80",
+      "commit": {
+        "message": "i18n step 2\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-12T10:00:00Z"
+        },
+        "committer": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-12T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "aiko-t"
+      }
+    },
+    {
+      "sha": "c96cc53c349303654a82cd0efb74266760b05ee7",
+      "commit": {
+        "message": "i18n step 3\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-20T10:00:00Z"
+        },
+        "committer": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-20T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "aiko-t"
+      }
+    },
+    {
+      "sha": "6f29f54e1ab290de8fb2e0d3e02b60340cbaf9ac",
+      "commit": {
+        "message": "i18n step 4\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-25T10:00:00Z"
+        },
+        "committer": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-25T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "aiko-t"
+      }
+    },
+    {
+      "sha": "5f515ae9e118d56a9f123a45f58a2946024aac4d",
+      "commit": {
+        "message": "i18n step 5\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-30T10:00:00Z"
+        },
+        "committer": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-30T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "aiko-t"
+      }
+    },
+    {
+      "sha": "1de25e25de32bbbc8eb5d491ab36a377c9e2efb1",
+      "commit": {
+        "message": "i18n step 6\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Aiko Tanaka",
+          "date": "2026-10-03T10:00:00Z"
+        },
+        "committer": {
+          "name": "Aiko Tanaka",
+          "date": "2026-10-03T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "aiko-t"
+      }
+    }
+  ]
+}

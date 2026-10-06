@@ -1,0 +1,206 @@
+[
+  {
+    "sha": "3a26d1c7a2f2db3d8051c152fe8646fdd8fd4580",
+    "commit": {
+      "message": "Release notes for 1.9\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Mira Kovacs",
+        "date": "2026-10-02T09:10:00Z"
+      },
+      "committer": {
+        "name": "Mira Kovacs",
+        "date": "2026-10-02T09:10:00Z"
+      }
+    },
+    "author": {
+      "login": "mira"
+    }
+  },
+  {
+    "sha": "c2526b83e77e36f3a577b75b15a1beec7cf5b4ff",
+    "commit": {
+      "message": "Fix footer spacing\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Tomasz Nowak",
+        "date": "2026-09-30T16:00:00Z"
+      },
+      "committer": {
+        "name": "Tomasz Nowak",
+        "date": "2026-09-30T16:00:00Z"
+      }
+    },
+    "author": {
+      "login": "tomasz"
+    }
+  },
+  {
+    "sha": "64f85095c7f77bb6aa31888cff62b382ae3e59f2",
+    "commit": {
+      "message": "Merge fix/rss-dates\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Mira Kovacs",
+        "date": "2026-09-18T11:30:00Z"
+      },
+      "committer": {
+        "name": "Mira Kovacs",
+        "date": "2026-09-18T11:30:00Z"
+      }
+    },
+    "author": {
+      "login": "mira"
+    }
+  },
+  {
+    "sha": "3e3cf1b8fa96b8766dc454fa0718e47d4ea3641d",
+    "commit": {
+      "message": "Merge feature/dark-mode\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Tomasz Nowak",
+        "date": "2026-09-16T08:45:00Z"
+      },
+      "committer": {
+        "name": "Tomasz Nowak",
+        "date": "2026-09-16T08:45:00Z"
+      }
+    },
+    "author": {
+      "login": "tomasz"
+    }
+  },
+  {
+    "sha": "3b5f693b2dc2d3c7188b20ca46baa5f816b3ca0a",
+    "commit": {
+      "message": "Update CI cache key\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Jun Park",
+        "date": "2026-09-10T13:20:00Z"
+      },
+      "committer": {
+        "name": "Jun Park",
+        "date": "2026-09-10T13:20:00Z"
+      }
+    },
+    "author": {
+      "login": "junpark"
+    }
+  },
+  {
+    "sha": "7d3e10b731b389917aaa858b183a091ffdff6e41",
+    "commit": {
+      "message": "Merge refactor/router\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Rahul Dev",
+        "date": "2026-08-21T10:00:00Z"
+      },
+      "committer": {
+        "name": "Rahul Dev",
+        "date": "2026-08-21T10:00:00Z"
+      }
+    },
+    "author": {
+      "login": "rahul-dev"
+    }
+  },
+  {
+    "sha": "3ce48a583e9797d7ba85ccd5f3623e9b2cec872b",
+    "commit": {
+      "message": "Bump dependencies\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Lena Fischer",
+        "date": "2026-08-02T14:05:00Z"
+      },
+      "committer": {
+        "name": "Lena Fischer",
+        "date": "2026-08-02T14:05:00Z"
+      }
+    },
+    "author": {
+      "login": "lena"
+    }
+  },
+  {
+    "sha": "cbf138b5038c26ea3a979b0b3bd6e6390eb81f6d",
+    "commit": {
+      "message": "Add search index\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Aiko Tanaka",
+        "date": "2026-07-20T09:00:00Z"
+      },
+      "committer": {
+        "name": "Aiko Tanaka",
+        "date": "2026-07-20T09:00:00Z"
+      }
+    },
+    "author": {
+      "login": "aiko-t"
+    }
+  },
+  {
+    "sha": "7d743f5432997b36ac02874c2e1001b4a7de4c35",
+    "commit": {
+      "message": "Improve build logging\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Mira Kovacs",
+        "date": "2026-07-11T17:40:00Z"
+      },
+      "committer": {
+        "name": "Mira Kovacs",
+        "date": "2026-07-11T17:40:00Z"
+      }
+    },
+    "author": {
+      "login": "mira"
+    }
+  },
+  {
+    "sha": "69d2fd67b5a76d08f9aed3185aa9facbca6cb6ce",
+    "commit": {
+      "message": "Add watch mode\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Rahul Dev",
+        "date": "2026-07-05T12:00:00Z"
+      },
+      "committer": {
+        "name": "Rahul Dev",
+        "date": "2026-07-05T12:00:00Z"
+      }
+    },
+    "author": {
+      "login": "rahul-dev"
+    }
+  },
+  {
+    "sha": "a21b2d0259fc38a977e2cd4764b834d388f8b084",
+    "commit": {
+      "message": "Document config\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Jun Park",
+        "date": "2026-06-22T10:15:00Z"
+      },
+      "committer": {
+        "name": "Jun Park",
+        "date": "2026-06-22T10:15:00Z"
+      }
+    },
+    "author": {
+      "login": "junpark"
+    }
+  },
+  {
+    "sha": "02b461a72ba10bc82e4fcf900839cefe9ae6dc92",
+    "commit": {
+      "message": "Initial theme\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Lena Fischer",
+        "date": "2026-06-01T08:00:00Z"
+      },
+      "committer": {
+        "name": "Lena Fischer",
+        "date": "2026-06-01T08:00:00Z"
+      }
+    },
+    "author": {
+      "login": "lena"
+    }
+  }
+]

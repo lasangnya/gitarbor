@@ -1,0 +1,10 @@
+{
+  "full_name": "example/lantern",
+  "name": "lantern",
+  "owner": {
+    "login": "example"
+  },
+  "description": "A tiny static site generator.",
+  "default_branch": "main",
+  "stargazers_count": 1280
+}

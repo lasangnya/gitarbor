@@ -1,0 +1,93 @@
+{
+  "status": "ahead",
+  "ahead_by": 4,
+  "behind_by": 2,
+  "total_commits": 4,
+  "merge_base_commit": {
+    "sha": "69d2fd67b5a76d08f9aed3185aa9facbca6cb6ce",
+    "commit": {
+      "message": "Add watch mode\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Rahul Dev",
+        "date": "2026-07-05T12:00:00Z"
+      },
+      "committer": {
+        "name": "Rahul Dev",
+        "date": "2026-07-05T12:00:00Z"
+      }
+    },
+    "author": {
+      "login": "rahul-dev"
+    }
+  },
+  "commits": [
+    {
+      "sha": "cd193c9de19299e807e9d694e71f2b946469c42b",
+      "commit": {
+        "message": "dark-mode step 1\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Tomasz Nowak",
+          "date": "2026-09-01T10:00:00Z"
+        },
+        "committer": {
+          "name": "Tomasz Nowak",
+          "date": "2026-09-01T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "tomasz"
+      }
+    },
+    {
+      "sha": "13ff4828c8f2d88b9f0269fdc89a158302a70f74",
+      "commit": {
+        "message": "dark-mode step 2\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Tomasz Nowak",
+          "date": "2026-09-05T10:00:00Z"
+        },
+        "committer": {
+          "name": "Tomasz Nowak",
+          "date": "2026-09-05T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "tomasz"
+      }
+    },
+    {
+      "sha": "52f54f5fd44f63ddc4ed0c89800ccfde6c819389",
+      "commit": {
+        "message": "dark-mode step 3\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Tomasz Nowak",
+          "date": "2026-09-10T10:00:00Z"
+        },
+        "committer": {
+          "name": "Tomasz Nowak",
+          "date": "2026-09-10T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "tomasz"
+      }
+    },
+    {
+      "sha": "4e93898d66b27005a0a6465d452cfc134bd2021a",
+      "commit": {
+        "message": "dark-mode step 4\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Tomasz Nowak",
+          "date": "2026-09-14T10:00:00Z"
+        },
+        "committer": {
+          "name": "Tomasz Nowak",
+          "date": "2026-09-14T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "tomasz"
+      }
+    }
+  ]
+}

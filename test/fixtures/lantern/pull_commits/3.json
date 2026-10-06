@@ -1,0 +1,51 @@
+[
+  {
+    "sha": "1ab881f433007d1b58d769c7c9be0c60dfd63af0",
+    "commit": {
+      "message": "rss-dates step 1\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Mira Kovacs",
+        "date": "2026-08-28T10:00:00Z"
+      },
+      "committer": {
+        "name": "Mira Kovacs",
+        "date": "2026-08-28T10:00:00Z"
+      }
+    },
+    "author": {
+      "login": "mira"
+    }
+  },
+  {
+    "sha": "47d7f097b200b693bd1d108dcb4c51e5b9f444c4",
+    "commit": {
+      "message": "rss-dates step 2\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Mira K",
+        "date": "2026-08-30T10:00:00Z"
+      },
+      "committer": {
+        "name": "Mira K",
+        "date": "2026-08-30T10:00:00Z"
+      }
+    },
+    "author": null
+  },
+  {
+    "sha": "3c67d017540532270d6ab98c71eb7327bf8a7e6d",
+    "commit": {
+      "message": "rss-dates step 3\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Mira Kovacs",
+        "date": "2026-09-01T10:00:00Z"
+      },
+      "committer": {
+        "name": "Mira Kovacs",
+        "date": "2026-09-01T10:00:00Z"
+      }
+    },
+    "author": {
+      "login": "mira"
+    }
+  }
+]

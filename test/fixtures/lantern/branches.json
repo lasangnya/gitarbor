@@ -1,0 +1,65 @@
+[
+  {
+    "name": "main",
+    "commit": {
+      "sha": "3a26d1c7a2f2db3d8051c152fe8646fdd8fd4580"
+    },
+    "protected": true
+  },
+  {
+    "name": "experiment/wasm-build",
+    "commit": {
+      "sha": "3176f8ed4018062daa5e58945cc5a0d56b805c6b"
+    },
+    "protected": false
+  },
+  {
+    "name": "feature/i18n",
+    "commit": {
+      "sha": "1de25e25de32bbbc8eb5d491ab36a377c9e2efb1"
+    },
+    "protected": false
+  },
+  {
+    "name": "feature/dark-mode",
+    "commit": {
+      "sha": "4e93898d66b27005a0a6465d452cfc134bd2021a"
+    },
+    "protected": false
+  },
+  {
+    "name": "release/2.0",
+    "commit": {
+      "sha": "4ca56f85a3f094369bd34ed9b3b1cc8bb0138088"
+    },
+    "protected": false
+  },
+  {
+    "name": "feature/plugin-api",
+    "commit": {
+      "sha": "e862eb0d2cd1440004f87bae9894a84da9bf09db"
+    },
+    "protected": false
+  },
+  {
+    "name": "docs/getting-started",
+    "commit": {
+      "sha": "ff90cd1d21bef95109fc2caf09c3715bef55ae53"
+    },
+    "protected": false
+  },
+  {
+    "name": "feature/i18n-rtl",
+    "commit": {
+      "sha": "6ac23a81a130d6705201f2ea393b3c92203d3deb"
+    },
+    "protected": false
+  },
+  {
+    "name": "chore/ci-cache",
+    "commit": {
+      "sha": "1468760a52e0f48178a29cf98dbbe72e233eed14"
+    },
+    "protected": false
+  }
+]

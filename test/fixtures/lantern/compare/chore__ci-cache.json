@@ -1,0 +1,24 @@
+{
+  "status": "behind",
+  "ahead_by": 0,
+  "behind_by": 4,
+  "total_commits": 0,
+  "merge_base_commit": {
+    "sha": "3b5f693b2dc2d3c7188b20ca46baa5f816b3ca0a",
+    "commit": {
+      "message": "Update CI cache key\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Jun Park",
+        "date": "2026-09-10T13:20:00Z"
+      },
+      "committer": {
+        "name": "Jun Park",
+        "date": "2026-09-10T13:20:00Z"
+      }
+    },
+    "author": {
+      "login": "junpark"
+    }
+  },
+  "commits": []
+}

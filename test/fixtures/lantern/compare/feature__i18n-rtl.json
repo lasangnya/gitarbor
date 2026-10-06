@@ -1,0 +1,76 @@
+{
+  "status": "ahead",
+  "ahead_by": 3,
+  "behind_by": 2,
+  "total_commits": 3,
+  "merge_base_commit": {
+    "sha": "c96cc53c349303654a82cd0efb74266760b05ee7",
+    "commit": {
+      "message": "i18n step 3\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Aiko Tanaka",
+        "date": "2026-09-20T10:00:00Z"
+      },
+      "committer": {
+        "name": "Aiko Tanaka",
+        "date": "2026-09-20T10:00:00Z"
+      }
+    },
+    "author": {
+      "login": "aiko-t"
+    }
+  },
+  "commits": [
+    {
+      "sha": "1c450363a8b15d42a1d88bb8bf606cf9de23490c",
+      "commit": {
+        "message": "i18n-rtl step 1\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Tomasz Nowak",
+          "date": "2026-09-26T10:00:00Z"
+        },
+        "committer": {
+          "name": "Tomasz Nowak",
+          "date": "2026-09-26T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "tomasz"
+      }
+    },
+    {
+      "sha": "5bc53c36d403b81dc5e46a419705d40e2cd55b5b",
+      "commit": {
+        "message": "i18n-rtl step 2\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Tomasz Nowak",
+          "date": "2026-10-01T10:00:00Z"
+        },
+        "committer": {
+          "name": "Tomasz Nowak",
+          "date": "2026-10-01T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "tomasz"
+      }
+    },
+    {
+      "sha": "6ac23a81a130d6705201f2ea393b3c92203d3deb",
+      "commit": {
+        "message": "i18n-rtl step 3\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Tomasz Nowak",
+          "date": "2026-10-04T10:00:00Z"
+        },
+        "committer": {
+          "name": "Tomasz Nowak",
+          "date": "2026-10-04T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "tomasz"
+      }
+    }
+  ]
+}

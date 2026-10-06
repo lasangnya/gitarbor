@@ -1,0 +1,93 @@
+{
+  "status": "ahead",
+  "ahead_by": 4,
+  "behind_by": 2,
+  "total_commits": 4,
+  "merge_base_commit": {
+    "sha": "69d2fd67b5a76d08f9aed3185aa9facbca6cb6ce",
+    "commit": {
+      "message": "Add watch mode\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Rahul Dev",
+        "date": "2026-07-05T12:00:00Z"
+      },
+      "committer": {
+        "name": "Rahul Dev",
+        "date": "2026-07-05T12:00:00Z"
+      }
+    },
+    "author": {
+      "login": "rahul-dev"
+    }
+  },
+  "commits": [
+    {
+      "sha": "d97985d54295fb8481a9d6483159e3a7e3025321",
+      "commit": {
+        "message": "plugin-api step 1\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-08T10:00:00Z"
+        },
+        "committer": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-08T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "aiko-t"
+      }
+    },
+    {
+      "sha": "a848823275d31218e506cdfe4e85df1ba7c0d692",
+      "commit": {
+        "message": "plugin-api step 2\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-17T10:00:00Z"
+        },
+        "committer": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-17T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "aiko-t"
+      }
+    },
+    {
+      "sha": "df0a37729d36d82524c6c3205c944c8821eae52f",
+      "commit": {
+        "message": "plugin-api step 3\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-21T10:00:00Z"
+        },
+        "committer": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-21T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "aiko-t"
+      }
+    },
+    {
+      "sha": "e862eb0d2cd1440004f87bae9894a84da9bf09db",
+      "commit": {
+        "message": "plugin-api step 4\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-28T10:00:00Z"
+        },
+        "committer": {
+          "name": "Aiko Tanaka",
+          "date": "2026-09-28T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "aiko-t"
+      }
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+[
+  {
+    "number": 8,
+    "state": "closed",
+    "merged_at": null,
+    "closed_at": "2026-10-02T08:00:00Z",
+    "updated_at": "2026-10-02T08:00:00Z",
+    "created_at": "2026-10-02T08:00:00Z",
+    "user": {
+      "login": "someone-else"
+    },
+    "commits": 1,
+    "head": {
+      "ref": "patch-1",
+      "sha": "89d848f7734349c85fdd916765687e37251b397e",
+      "repo": {
+        "full_name": "someone-else/lantern"
+      }
+    },
+    "base": {
+      "ref": "main",
+      "sha": "a21b2d0259fc38a977e2cd4764b834d388f8b084",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    }
+  },
+  {
+    "number": 5,
+    "state": "open",
+    "merged_at": null,
+    "closed_at": null,
+    "updated_at": "2026-10-04T10:00:00Z",
+    "created_at": "2026-10-04T10:00:00Z",
+    "user": {
+      "login": "tomasz"
+    },
+    "commits": 3,
+    "head": {
+      "ref": "feature/i18n-rtl",
+      "sha": "2fa346154097659a47c51d3a80921590bd3eadf0",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    },
+    "base": {
+      "ref": "feature/i18n",
+      "sha": "a21b2d0259fc38a977e2cd4764b834d388f8b084",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    }
+  },
+  {
+    "number": 4,
+    "state": "closed",
+    "merged_at": "2026-09-15T09:00:00Z",
+    "closed_at": "2026-09-15T09:00:00Z",
+    "updated_at": "2026-09-15T09:00:00Z",
+    "created_at": "2026-09-15T09:00:00Z",
+    "user": {
+      "login": "tomasz"
+    },
+    "commits": 4,
+    "head": {
+      "ref": "feature/dark-mode",
+      "sha": "e8677626fd75a73d23e6ed9b48f41fcb99564df2",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    },
+    "base": {
+      "ref": "main",
+      "sha": "a21b2d0259fc38a977e2cd4764b834d388f8b084",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    }
+  },
+  {
+    "number": 7,
+    "state": "closed",
+    "merged_at": "2026-09-10T12:00:00Z",
+    "closed_at": "2026-09-10T12:00:00Z",
+    "updated_at": "2026-09-10T12:00:00Z",
+    "created_at": "2026-09-10T12:00:00Z",
+    "user": {
+      "login": "junpark"
+    },
+    "commits": 2,
+    "head": {
+      "ref": "chore/ci-cache",
+      "sha": "d035b9c579b72e4915bf85e2458f0ad592b183f1",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    },
+    "base": {
+      "ref": "main",
+      "sha": "a21b2d0259fc38a977e2cd4764b834d388f8b084",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    }
+  },
+  {
+    "number": 3,
+    "state": "closed",
+    "merged_at": "2026-09-02T09:00:00Z",
+    "closed_at": "2026-09-02T09:00:00Z",
+    "updated_at": "2026-09-02T09:00:00Z",
+    "created_at": "2026-09-02T09:00:00Z",
+    "user": {
+      "login": "mira"
+    },
+    "commits": 3,
+    "head": {
+      "ref": "fix/rss-dates",
+      "sha": "c48cad29e653b346bf09851a43ac8438b46d5b6b",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    },
+    "base": {
+      "ref": "main",
+      "sha": "a21b2d0259fc38a977e2cd4764b834d388f8b084",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    }
+  },
+  {
+    "number": 1,
+    "state": "closed",
+    "merged_at": "2026-08-20T09:00:00Z",
+    "closed_at": "2026-08-20T09:00:00Z",
+    "updated_at": "2026-08-20T09:00:00Z",
+    "created_at": "2026-08-20T09:00:00Z",
+    "user": {
+      "login": "rahul-dev"
+    },
+    "commits": 5,
+    "head": {
+      "ref": "refactor/router",
+      "sha": "1db1df5ee507604adb390e63b68974f44f4be313",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    },
+    "base": {
+      "ref": "main",
+      "sha": "a21b2d0259fc38a977e2cd4764b834d388f8b084",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    }
+  },
+  {
+    "number": 2,
+    "state": "closed",
+    "merged_at": null,
+    "closed_at": "2026-03-10T09:00:00Z",
+    "updated_at": "2026-03-10T09:00:00Z",
+    "created_at": "2026-03-10T09:00:00Z",
+    "user": {
+      "login": "lena"
+    },
+    "commits": 3,
+    "head": {
+      "ref": "feature/old-editor",
+      "sha": "027181ff0044c238f580fe7ebb260e8f2f1b4462",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    },
+    "base": {
+      "ref": "main",
+      "sha": "a21b2d0259fc38a977e2cd4764b834d388f8b084",
+      "repo": {
+        "full_name": "example/lantern"
+      }
+    }
+  }
+]

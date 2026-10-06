@@ -1,0 +1,53 @@
+[
+  {
+    "sha": "ed5119ac622b867f82fff6c65aa8641430cd267d",
+    "commit": {
+      "message": "old-editor step 1\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Lena Fischer",
+        "date": "2026-02-01T10:00:00Z"
+      },
+      "committer": {
+        "name": "Lena Fischer",
+        "date": "2026-02-01T10:00:00Z"
+      }
+    },
+    "author": {
+      "login": "lena"
+    }
+  },
+  {
+    "sha": "ac2459721b0224a3e0e80344ca5503c24f187a1e",
+    "commit": {
+      "message": "old-editor step 2\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Lena Fischer",
+        "date": "2026-02-10T10:00:00Z"
+      },
+      "committer": {
+        "name": "Lena Fischer",
+        "date": "2026-02-10T10:00:00Z"
+      }
+    },
+    "author": {
+      "login": "lena"
+    }
+  },
+  {
+    "sha": "ab291bcc697dd9441d74764d8ebfe01b5720026d",
+    "commit": {
+      "message": "old-editor step 3\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Lena Fischer",
+        "date": "2026-02-20T10:00:00Z"
+      },
+      "committer": {
+        "name": "Lena Fischer",
+        "date": "2026-02-20T10:00:00Z"
+      }
+    },
+    "author": {
+      "login": "lena"
+    }
+  }
+]

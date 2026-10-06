@@ -1,0 +1,76 @@
+{
+  "status": "ahead",
+  "ahead_by": 3,
+  "behind_by": 2,
+  "total_commits": 3,
+  "merge_base_commit": {
+    "sha": "69d2fd67b5a76d08f9aed3185aa9facbca6cb6ce",
+    "commit": {
+      "message": "Add watch mode\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Rahul Dev",
+        "date": "2026-07-05T12:00:00Z"
+      },
+      "committer": {
+        "name": "Rahul Dev",
+        "date": "2026-07-05T12:00:00Z"
+      }
+    },
+    "author": {
+      "login": "rahul-dev"
+    }
+  },
+  "commits": [
+    {
+      "sha": "d845adff4583c7ae66e8882d00f33d87aa22f1ca",
+      "commit": {
+        "message": "2.0 step 1\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Mira Kovacs",
+          "date": "2026-09-22T10:00:00Z"
+        },
+        "committer": {
+          "name": "Mira Kovacs",
+          "date": "2026-09-22T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "mira"
+      }
+    },
+    {
+      "sha": "9caa185f4a2a03a434a6324fe26cc3d34d361077",
+      "commit": {
+        "message": "2.0 step 2\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Mira Kovacs",
+          "date": "2026-09-27T10:00:00Z"
+        },
+        "committer": {
+          "name": "Mira Kovacs",
+          "date": "2026-09-27T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "mira"
+      }
+    },
+    {
+      "sha": "4ca56f85a3f094369bd34ed9b3b1cc8bb0138088",
+      "commit": {
+        "message": "2.0 step 3\n\nLonger body that must be ignored.",
+        "author": {
+          "name": "Mira Kovacs",
+          "date": "2026-10-01T10:00:00Z"
+        },
+        "committer": {
+          "name": "Mira Kovacs",
+          "date": "2026-10-01T10:00:00Z"
+        }
+      },
+      "author": {
+        "login": "mira"
+      }
+    }
+  ]
+}

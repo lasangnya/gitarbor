@@ -1,0 +1,36 @@
+[
+  {
+    "sha": "fbd7ca5798cc1b1c42ed7e2dea96a99e6b755fc0",
+    "commit": {
+      "message": "ci-cache step 1\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Jun Park",
+        "date": "2026-09-08T10:00:00Z"
+      },
+      "committer": {
+        "name": "Jun Park",
+        "date": "2026-09-08T10:00:00Z"
+      }
+    },
+    "author": {
+      "login": "junpark"
+    }
+  },
+  {
+    "sha": "1468760a52e0f48178a29cf98dbbe72e233eed14",
+    "commit": {
+      "message": "ci-cache step 2\n\nLonger body that must be ignored.",
+      "author": {
+        "name": "Jun Park",
+        "date": "2026-09-09T10:00:00Z"
+      },
+      "committer": {
+        "name": "Jun Park",
+        "date": "2026-09-09T10:00:00Z"
+      }
+    },
+    "author": {
+      "login": "junpark"
+    }
+  }
+]
