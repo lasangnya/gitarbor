@@ -5,7 +5,10 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// Set with `--dart-define=GITHUB_CLIENT_ID=...`. Without it the app offers
 /// only the paste-a-token sign-in.
-const githubClientId = String.fromEnvironment('GITHUB_CLIENT_ID');
+const githubClientId = String.fromEnvironment(
+  'GITHUB_CLIENT_ID',
+  defaultValue: 'Ov23liJBtZGYOpno025L',
+);
 
 bool get oauthConfigured => githubClientId.isNotEmpty;
 

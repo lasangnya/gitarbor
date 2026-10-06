@@ -4,20 +4,8 @@ import 'sample_tree.dart';
 import 'tree_model.dart';
 import 'tree_painter.dart';
 import 'tree_palette.dart';
+import '../ui/format.dart';
 import 'tree_view.dart';
-
-/// Age text like the design page's `fmtAge`.
-String formatAge(double d) => d < 1
-    ? 'today'
-    : d < 2
-    ? 'yesterday'
-    : d < 14
-    ? '${d.round()} days ago'
-    : d < 60
-    ? '${(d / 7).round()} weeks ago'
-    : d < 365
-    ? '${(d / 30).round()} months ago'
-    : 'over a year ago';
 
 /// Plain debug screen for the tree renderer. Phase 4 replaces it.
 class DebugTreeScreen extends StatefulWidget {

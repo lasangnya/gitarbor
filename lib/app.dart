@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'tree/debug_tree_screen.dart';
+import 'state/app_state.dart';
+import 'ui/plant_screen.dart';
+import 'ui/theme.dart';
 
-class GitarborApp extends StatelessWidget {
+class GitarborApp extends ConsumerWidget {
   const GitarborApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final choice = ref.watch(settingsProvider.select((s) => s.theme));
     return MaterialApp(
       title: 'Gitarbor',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Bricolage Grotesque',
-        scaffoldBackgroundColor: const Color(0xFFEDF1E8),
-      ),
-      home: const DebugTreeScreen(),
+      theme: buildTheme(GitarborTokens.day, Brightness.light),
+      darkTheme: buildTheme(GitarborTokens.night, Brightness.dark),
+      themeMode: switch (choice) {
+        ThemeChoice.system => ThemeMode.system,
+        ThemeChoice.day => ThemeMode.light,
+        ThemeChoice.night => ThemeMode.dark,
+      },
+      home: const PlantScreen(),
     );
   }
 }
