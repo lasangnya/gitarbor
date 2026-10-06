@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,6 +17,7 @@ import 'format.dart';
 import 'live_parts.dart';
 import 'theme.dart';
 import 'widgets/author_avatar.dart';
+import 'widgets/focus_ring.dart';
 import 'widgets/brand.dart';
 import 'widgets/gcard.dart';
 import 'widgets/legend.dart';
@@ -50,6 +52,9 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
   double _zoom = 1;
   Offset _pan = Offset.zero;
   bool _labels = true;
+
+  /// Phone only: branch tags on the tree, off by default (they crowd 390 px).
+  bool _tags = false;
   TreeFocus? _focus;
   LimbSpec? _selected;
   LeafHover? _hover;
@@ -86,6 +91,16 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
   void _scrub(double v) {
     _replay.stop();
     setState(() => _grow = v);
+  }
+
+  void _scrubBy(double d) => _scrub((_grow + d).clamp(.04, 1));
+
+  void _toggleLabels() {
+    if (MediaQuery.sizeOf(context).width < 700) {
+      setState(() => _tags = !_tags);
+    } else {
+      setState(() => _labels = !_labels);
+    }
   }
 
   void _zoomBy(double f) => setState(() => _zoom = (_zoom * f).clamp(.6, 2.2));
@@ -141,22 +156,28 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
   }) {
     final t = context.tokens;
     final reduce = ref.watch(settingsProvider.select((s) => s.reduceMotion));
-    return TreeView(
-      model: _model,
-      palette: t.tree,
-      grow: _grow,
-      wind: _wind,
-      still: reduce,
-      labels: labels,
-      petals: true,
-      viewBox: viewBox,
-      focus: _focus,
-      selected: _selected?.name,
-      zoom: _zoom,
-      pan: _pan,
-      onHover: hover ? (h) => setState(() => _hover = h) : null,
-      onLimbTap: tap ? _tapLimb : null,
-      onPan: pan ? (d) => setState(() => _pan += d) : null,
+    return Semantics(
+      label:
+          'Tree of ${_snap.fullName}: ${_snap.branches.length} branches, '
+          '${formatNumber(_snap.totalCommits)} commits',
+      image: true,
+      child: TreeView(
+        model: _model,
+        palette: t.tree,
+        grow: _grow,
+        wind: _wind,
+        still: reduce,
+        labels: labels,
+        petals: true,
+        viewBox: viewBox,
+        focus: _focus,
+        selected: _selected?.name,
+        zoom: _zoom,
+        pan: _pan,
+        onHover: hover ? (h) => setState(() => _hover = h) : null,
+        onLimbTap: tap ? _tapLimb : null,
+        onPan: pan ? (d) => setState(() => _pan += d) : null,
+      ),
     );
   }
 
@@ -165,12 +186,38 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
     return LayoutBuilder(
       builder: (context, c) {
         final w = c.maxWidth;
-        return Scaffold(
-          body: w >= 1200
-              ? _desktop(context)
-              : w >= 700
-              ? _tablet(context)
-              : _phone(context),
+        return CallbackShortcuts(
+          bindings: {
+            const SingleActivator(LogicalKeyboardKey.space): _play,
+            const SingleActivator(LogicalKeyboardKey.equal): () =>
+                _zoomBy(1.15),
+            const SingleActivator(LogicalKeyboardKey.equal, shift: true): () =>
+                _zoomBy(1.15),
+            const SingleActivator(LogicalKeyboardKey.add): () => _zoomBy(1.15),
+            const SingleActivator(LogicalKeyboardKey.numpadAdd): () =>
+                _zoomBy(1.15),
+            const SingleActivator(LogicalKeyboardKey.minus): () => _zoomBy(.87),
+            const SingleActivator(LogicalKeyboardKey.numpadSubtract): () =>
+                _zoomBy(.87),
+            const SingleActivator(LogicalKeyboardKey.digit0): _fit,
+            const SingleActivator(LogicalKeyboardKey.numpad0): _fit,
+            const SingleActivator(LogicalKeyboardKey.keyL): _toggleLabels,
+            const SingleActivator(LogicalKeyboardKey.escape): _clearSelection,
+            const SingleActivator(LogicalKeyboardKey.arrowLeft): () =>
+                _scrubBy(-.05),
+            const SingleActivator(LogicalKeyboardKey.arrowRight): () =>
+                _scrubBy(.05),
+          },
+          child: Focus(
+            autofocus: true,
+            child: Scaffold(
+              body: w >= 1200
+                  ? _desktop(context)
+                  : w >= 700
+                  ? _tablet(context)
+                  : _phone(context),
+            ),
+          ),
         );
       },
     );
@@ -623,6 +670,38 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
 
   // ---------------------------------------------------------------- phone
 
+  Widget _tagsToggle(GitarborTokens t) {
+    return Semantics(
+      button: true,
+      toggled: _tags,
+      label: 'Tags',
+      excludeSemantics: true,
+      onTap: _toggleLabels,
+      child: FocusRing(
+        radius: 16,
+        child: Material(
+          color: _tags ? t.ctaSoft : t.surface,
+          shape: StadiumBorder(
+            side: BorderSide(color: _tags ? t.ctaLine : t.line),
+          ),
+          child: InkWell(
+            customBorder: const StadiumBorder(),
+            onTap: _toggleLabels,
+            child: Container(
+              height: 32,
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              alignment: Alignment.center,
+              child: Text(
+                'Tags',
+                style: TextStyle(fontSize: 13, color: _tags ? t.ink : t.ink2),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _phone(BuildContext context) {
     final t = context.tokens;
     return SafeArea(
@@ -653,6 +732,8 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
                       ),
                     ),
                   ),
+                  _tagsToggle(t),
+                  const SizedBox(width: 4),
                   SettingsMenu(
                     icon: Icons.more_horiz,
                     size: 48,
@@ -683,7 +764,10 @@ class _LiveScreenState extends ConsumerState<LiveScreen>
                       left: 0,
                       right: 0,
                       height: treeH,
-                      child: _tree(labels: TreeLabels.compact, tap: true),
+                      child: _tree(
+                        labels: _tags ? TreeLabels.compact : TreeLabels.none,
+                        tap: true,
+                      ),
                     ),
                     DraggableScrollableSheet(
                       initialChildSize: initial,

@@ -13,6 +13,7 @@ import '../tree/tree_painter.dart';
 import '../ui/live_parts.dart';
 import '../ui/theme.dart';
 import '../ui/widgets/brand.dart';
+import '../ui/widgets/focus_ring.dart';
 import '../ui/widgets/repo_crumb.dart';
 import 'plate_pdf.dart';
 
@@ -64,12 +65,8 @@ class _PrintScreenState extends State<PrintScreen> {
     _debounce = Timer(const Duration(milliseconds: 300), _rebuild);
   }
 
-  Future<Uint8List> _bytes() => buildPlatePdf(
-    _snap,
-    _model,
-    _options,
-    collected: _collected,
-  );
+  Future<Uint8List> _bytes() =>
+      buildPlatePdf(_snap, _model, _options, collected: _collected);
 
   Future<void> _rebuild() async {
     final gen = ++_gen;
@@ -164,9 +161,7 @@ class _PrintScreenState extends State<PrintScreen> {
 
   void _toast(String text) {
     if (!mounted) return;
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(text)));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
   }
 
   // ------------------------------------------------------------- layout
@@ -174,9 +169,8 @@ class _PrintScreenState extends State<PrintScreen> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (context, c) => Scaffold(
-        body: c.maxWidth >= 700 ? _wide(context) : _phone(context),
-      ),
+      builder: (context, c) =>
+          Scaffold(body: c.maxWidth >= 700 ? _wide(context) : _phone(context)),
     );
   }
 
@@ -195,7 +189,9 @@ class _PrintScreenState extends State<PrintScreen> {
             children: [
               const Brand(),
               const SizedBox(width: 16),
-              Flexible(child: RepoCrumb(owner: _snap.owner, repo: _snap.name)),
+              Flexible(
+                child: RepoCrumb(owner: _snap.owner, repo: _snap.name),
+              ),
               const Spacer(),
               LiveTabs(
                 printActive: true,
@@ -226,9 +222,7 @@ class _PrintScreenState extends State<PrintScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Expanded(
-                      child: SingleChildScrollView(child: _options_(t)),
-                    ),
+                    Expanded(child: SingleChildScrollView(child: _options_(t))),
                     const SizedBox(height: 16),
                     _actions(),
                   ],
@@ -489,24 +483,30 @@ class _Chip extends StatelessWidget {
     return Semantics(
       button: true,
       selected: selected,
-      child: Material(
-        color: selected ? t.ctaSoft : t.surface,
-        shape: StadiumBorder(
-          side: BorderSide(color: selected ? t.ctaLine : t.line),
-        ),
-        child: InkWell(
-          customBorder: const StadiumBorder(),
-          onTap: onTap,
-          child: Container(
-            height: 36,
-            padding: const EdgeInsets.symmetric(horizontal: 14),
-            alignment: Alignment.center,
-            child: Text(
-              label,
-              style: TextStyle(
-                fontSize: 13,
-                color: selected ? t.ink : t.ink2,
-                fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
+      label: label,
+      excludeSemantics: true,
+      onTap: onTap,
+      child: FocusRing(
+        radius: 18,
+        child: Material(
+          color: selected ? t.ctaSoft : t.surface,
+          shape: StadiumBorder(
+            side: BorderSide(color: selected ? t.ctaLine : t.line),
+          ),
+          child: InkWell(
+            customBorder: const StadiumBorder(),
+            onTap: onTap,
+            child: Container(
+              height: 36,
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              alignment: Alignment.center,
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontSize: 13,
+                  color: selected ? t.ink : t.ink2,
+                  fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
+                ),
               ),
             ),
           ),

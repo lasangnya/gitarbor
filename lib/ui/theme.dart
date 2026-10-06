@@ -41,7 +41,7 @@ class GitarborTokens extends ThemeExtension<GitarborTokens> {
     surface: Color(0xFFF9FBF5),
     ink: Color(0xFF1C2826),
     ink2: Color(0xBD1C2826),
-    ink3: Color(0x8A1C2826),
+    ink3: Color(0xA81C2826),
     line: Color(0x211C2826),
     line2: Color(0x121C2826),
     cta: Color(0xFFBF3C72),
@@ -122,6 +122,13 @@ ThemeData buildTheme(GitarborTokens t, Brightness b) {
     error: t.rust,
   );
   final shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(12));
+  // 2 px cta outline on keyboard focus, like the design's :focus-visible.
+  WidgetStateProperty<BorderSide?> ring(BorderSide? rest) =>
+      WidgetStateProperty.resolveWith(
+        (states) => states.contains(WidgetState.focused)
+            ? BorderSide(color: t.cta, width: 2)
+            : rest,
+      );
   return ThemeData(
     brightness: b,
     colorScheme: scheme,
@@ -146,13 +153,12 @@ ThemeData buildTheme(GitarborTokens t, Brightness b) {
           fontWeight: FontWeight.w600,
         ),
         shape: shape,
-      ),
+      ).copyWith(side: ring(null)),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: t.ink,
         backgroundColor: t.surface,
-        side: BorderSide(color: t.line),
         minimumSize: const Size(40, 40),
         textStyle: const TextStyle(
           fontFamily: Fonts.ui,
@@ -160,7 +166,7 @@ ThemeData buildTheme(GitarborTokens t, Brightness b) {
           fontWeight: FontWeight.w600,
         ),
         shape: shape,
-      ),
+      ).copyWith(side: ring(BorderSide(color: t.line))),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
@@ -172,7 +178,10 @@ ThemeData buildTheme(GitarborTokens t, Brightness b) {
           fontWeight: FontWeight.w600,
         ),
         shape: shape,
-      ),
+      ).copyWith(side: ring(null)),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(shape: shape).copyWith(side: ring(null)),
     ),
     chipTheme: ChipThemeData(
       backgroundColor: t.surface,

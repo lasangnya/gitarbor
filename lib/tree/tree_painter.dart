@@ -731,7 +731,7 @@ class TreePainter extends CustomPainter {
           ) +
           16;
       final bh = compact ? fs + 12 : fs * 2 + 18;
-      final ax = it.at.dx + it.side * 18;
+      final ax = it.at.dx + it.side * 26;
       final ay = it.at.dy - (compact ? 6 : 10);
       var bx = it.side > 0 ? ax : ax - bw;
       bx = bx.clamp(6.0, math.max(6.0, size.width - bw - 6)).toDouble();

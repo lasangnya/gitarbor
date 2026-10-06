@@ -13,6 +13,7 @@ import 'format.dart';
 import 'growing_screen.dart';
 import 'theme.dart';
 import 'widgets/brand.dart';
+import 'widgets/focus_ring.dart';
 import 'widgets/gcard.dart';
 import 'widgets/mini_tree.dart';
 import 'widgets/settings_menu.dart';
@@ -566,22 +567,34 @@ class RepoChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
-    return Material(
-      color: selected ? t.ctaSoft : t.surface,
-      shape: StadiumBorder(
-        side: BorderSide(color: selected ? t.ctaLine : t.line),
-      ),
-      child: InkWell(
-        customBorder: const StadiumBorder(),
-        onTap: onTap,
-        child: Container(
-          height: 32,
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(label, style: mono(12, color: selected ? t.ink : t.ink2)),
-            ],
+    return Semantics(
+      button: true,
+      label: 'Plant $label',
+      excludeSemantics: true,
+      onTap: onTap,
+      child: FocusRing(
+        radius: 16,
+        child: Material(
+          color: selected ? t.ctaSoft : t.surface,
+          shape: StadiumBorder(
+            side: BorderSide(color: selected ? t.ctaLine : t.line),
+          ),
+          child: InkWell(
+            customBorder: const StadiumBorder(),
+            onTap: onTap,
+            child: Container(
+              height: 32,
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    label,
+                    style: mono(12, color: selected ? t.ink : t.ink2),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
@@ -603,47 +616,61 @@ class _RecentRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
-    return Material(
-      color: t.surface,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: t.line2),
-      ),
-      child: InkWell(
-        customBorder: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          child: Row(
-            children: [
-              const MiniTree(),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      tree.fullName,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: mono(13, color: t.ink, weight: FontWeight.w500),
+    return Semantics(
+      button: true,
+      label:
+          '${tree.fullName}, ${tree.branches} branches, '
+          '${formatNumber(tree.commits)} commits',
+      excludeSemantics: true,
+      onTap: onTap,
+      child: FocusRing(
+        child: Material(
+          color: t.surface,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(color: t.line2),
+          ),
+          child: InkWell(
+            customBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            onTap: onTap,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              child: Row(
+                children: [
+                  const MiniTree(),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          tree.fullName,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: mono(
+                            13,
+                            color: t.ink,
+                            weight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          '${tree.branches} branches · '
+                          '${formatNumber(tree.commits)} commits',
+                          style: TextStyle(fontSize: 12, color: t.ink3),
+                        ),
+                      ],
                     ),
-                    Text(
-                      '${tree.branches} branches · '
-                      '${formatNumber(tree.commits)} commits',
-                      style: TextStyle(fontSize: 12, color: t.ink3),
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(width: 12),
+                  Text(
+                    formatRelative(tree.plantedAt, now),
+                    style: TextStyle(fontSize: 12, color: t.ink3),
+                  ),
+                ],
               ),
-              const SizedBox(width: 12),
-              Text(
-                formatRelative(tree.plantedAt, now),
-                style: TextStyle(fontSize: 12, color: t.ink3),
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -659,16 +686,26 @@ class _LinkText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
-    return InkWell(
+    return Semantics(
+      link: true,
+      button: true,
+      label: text,
+      excludeSemantics: true,
       onTap: onTap,
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: 12,
-          color: t.ink2,
-          height: 1.5,
-          decoration: TextDecoration.underline,
-          decorationColor: t.ink3,
+      child: FocusRing(
+        radius: 4,
+        child: InkWell(
+          onTap: onTap,
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 12,
+              color: t.ink2,
+              height: 1.5,
+              decoration: TextDecoration.underline,
+              decorationColor: t.ink3,
+            ),
+          ),
         ),
       ),
     );

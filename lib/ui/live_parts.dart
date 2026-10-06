@@ -4,6 +4,7 @@ import '../data/models/repo_models.dart';
 import 'format.dart';
 import 'theme.dart';
 import 'widgets/author_avatar.dart';
+import 'widgets/focus_ring.dart';
 import 'widgets/status_icon.dart';
 
 /// Live / Print segmented tabs. Live is the current screen unless
@@ -25,30 +26,40 @@ class LiveTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
-    Widget tab(String label, bool on, VoidCallback? tap) => DecoratedBox(
-      decoration: BoxDecoration(
-        color: on ? t.surface : Colors.transparent,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: on
-            ? [
-                BoxShadow(
-                  color: t.line,
-                  blurRadius: 3,
-                  offset: const Offset(0, 1),
-                ),
-              ]
-            : null,
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(8),
-        onTap: tap,
-        child: Container(
-          height: height,
-          padding: const EdgeInsets.symmetric(horizontal: 14),
-          alignment: Alignment.center,
-          child: Text(
-            label,
-            style: TextStyle(fontSize: 13, color: on ? t.ink : t.ink2),
+    Widget tab(String label, bool on, VoidCallback? tap) => Semantics(
+      button: true,
+      selected: on,
+      label: label,
+      excludeSemantics: true,
+      onTap: tap,
+      child: FocusRing(
+        radius: 8,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: on ? t.surface : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
+            boxShadow: on
+                ? [
+                    BoxShadow(
+                      color: t.line,
+                      blurRadius: 3,
+                      offset: const Offset(0, 1),
+                    ),
+                  ]
+                : null,
+          ),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(8),
+            onTap: tap,
+            child: Container(
+              height: height,
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              alignment: Alignment.center,
+              child: Text(
+                label,
+                style: TextStyle(fontSize: 13, color: on ? t.ink : t.ink2),
+              ),
+            ),
           ),
         ),
       ),
@@ -138,35 +149,45 @@ class AuthorTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
-    return Material(
-      color: pressed ? t.ctaSoft : Colors.transparent,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-        side: BorderSide(color: pressed ? t.ctaLine : Colors.transparent),
-      ),
-      child: InkWell(
-        customBorder: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        onTap: onTap,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: minHeight),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-            child: Row(
-              children: [
-                AuthorAvatar(login: author.login, rank: rank),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Text(
-                    author.login,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 13),
-                  ),
+    return Semantics(
+      button: true,
+      selected: pressed,
+      label: '${author.login}, ${author.commits} commits',
+      excludeSemantics: true,
+      onTap: onTap,
+      child: FocusRing(
+        radius: 10,
+        child: Material(
+          color: pressed ? t.ctaSoft : Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: pressed ? t.ctaLine : Colors.transparent),
+          ),
+          child: InkWell(
+            customBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            onTap: onTap,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: minHeight),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                child: Row(
+                  children: [
+                    AuthorAvatar(login: author.login, rank: rank),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        author.login,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontSize: 13),
+                      ),
+                    ),
+                    Text('${author.commits}', style: mono(12, color: t.ink3)),
+                  ],
                 ),
-                Text('${author.commits}', style: mono(12, color: t.ink3)),
-              ],
+              ),
             ),
           ),
         ),
@@ -194,30 +215,40 @@ class PhoneTabs extends StatelessWidget {
         children: [
           for (var i = 0; i < 3; i++)
             Expanded(
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
+              child: Semantics(
+                button: true,
+                selected: i == index,
+                label: const ['Branches', 'Authors', 'Legend'][i],
+                excludeSemantics: true,
                 onTap: () => onChanged(i),
-                child: Container(
-                  height: 40,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: i == index ? t.surface : Colors.transparent,
+                child: FocusRing(
+                  radius: 8,
+                  child: InkWell(
                     borderRadius: BorderRadius.circular(8),
-                    boxShadow: i == index
-                        ? [
-                            BoxShadow(
-                              color: t.line,
-                              blurRadius: 3,
-                              offset: const Offset(0, 1),
-                            ),
-                          ]
-                        : null,
-                  ),
-                  child: Text(
-                    const ['Branches', 'Authors', 'Legend'][i],
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: i == index ? t.ink : t.ink2,
+                    onTap: () => onChanged(i),
+                    child: Container(
+                      height: 40,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: i == index ? t.surface : Colors.transparent,
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: i == index
+                            ? [
+                                BoxShadow(
+                                  color: t.line,
+                                  blurRadius: 3,
+                                  offset: const Offset(0, 1),
+                                ),
+                              ]
+                            : null,
+                      ),
+                      child: Text(
+                        const ['Branches', 'Authors', 'Legend'][i],
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: i == index ? t.ink : t.ink2,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -251,45 +282,55 @@ class BranchRow extends StatelessWidget {
       if (branch.author != null) branch.author!,
       if (last != null) formatAge(daysBetween(now, last)),
     ].join(' · ');
-    return InkWell(
+    return Semantics(
+      button: true,
+      selected: selected,
+      label: '${branch.name}, $sub, ${branch.commitCount} commits',
+      excludeSemantics: true,
       onTap: onTap,
-      child: Container(
-        constraints: const BoxConstraints(minHeight: 48),
-        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-        decoration: BoxDecoration(
-          color: selected ? t.ctaSoft : null,
-          border: Border(bottom: BorderSide(color: t.line2)),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 28,
-              height: 28,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: t.paper,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: StatusIcon(branch.status),
+      child: FocusRing(
+        radius: 4,
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            constraints: const BoxConstraints(minHeight: 48),
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+            decoration: BoxDecoration(
+              color: selected ? t.ctaSoft : null,
+              border: Border(bottom: BorderSide(color: t.line2)),
             ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    branch.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: mono(13, color: t.ink, weight: FontWeight.w500),
+            child: Row(
+              children: [
+                Container(
+                  width: 28,
+                  height: 28,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: t.paper,
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  Text(sub, style: TextStyle(fontSize: 12, color: t.ink3)),
-                ],
-              ),
+                  child: StatusIcon(branch.status),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        branch.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: mono(13, color: t.ink, weight: FontWeight.w500),
+                      ),
+                      Text(sub, style: TextStyle(fontSize: 12, color: t.ink3)),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Text('${branch.commitCount}', style: mono(12, color: t.ink3)),
+              ],
             ),
-            const SizedBox(width: 12),
-            Text('${branch.commitCount}', style: mono(12, color: t.ink3)),
-          ],
+          ),
         ),
       ),
     );
@@ -376,16 +417,25 @@ class ZoomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Tooltip(
-      message: tooltip,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(8),
-        onTap: onTap,
-        child: SizedBox(
-          width: 36,
-          height: 36,
-          child: Center(
-            child: Text(label, style: TextStyle(fontSize: fontSize)),
+    return Semantics(
+      button: true,
+      label: tooltip,
+      excludeSemantics: true,
+      onTap: onTap,
+      child: Tooltip(
+        message: tooltip,
+        child: FocusRing(
+          radius: 8,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(8),
+            onTap: onTap,
+            child: SizedBox(
+              width: 36,
+              height: 36,
+              child: Center(
+                child: Text(label, style: TextStyle(fontSize: fontSize)),
+              ),
+            ),
           ),
         ),
       ),
@@ -405,16 +455,24 @@ class PlayButton extends StatelessWidget {
     return Semantics(
       button: true,
       label: 'Replay growth',
-      child: Material(
-        color: t.ink,
-        shape: const CircleBorder(),
-        child: InkWell(
-          customBorder: const CircleBorder(),
-          onTap: onTap,
-          child: SizedBox(
-            width: size,
-            height: size,
-            child: Icon(Icons.play_arrow_rounded, color: t.paper, size: 22),
+      excludeSemantics: true,
+      onTap: onTap,
+      child: Tooltip(
+        message: 'Replay growth',
+        child: FocusRing(
+          radius: size / 2,
+          child: Material(
+            color: t.ink,
+            shape: const CircleBorder(),
+            child: InkWell(
+              customBorder: const CircleBorder(),
+              onTap: onTap,
+              child: SizedBox(
+                width: size,
+                height: size,
+                child: Icon(Icons.play_arrow_rounded, color: t.paper, size: 22),
+              ),
+            ),
           ),
         ),
       ),
